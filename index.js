@@ -28,11 +28,17 @@ function StartMenu() {
         case "View Roles":
           ViewRoles();
           break;
+        case "ViewEmployees":
+          ViewEmployees();
+          break;
         case "Add Department":
           AddDepartment();
           break;
         case "Add Role":
           AddRole();
+          break;
+         case "Add Employee":
+          AddEmployee();
           break;
       }
     });
@@ -41,24 +47,27 @@ async function ViewDepartment() {
   const department = await db.query("SELECT * FROM department");
   console.table(department);
   StartMenu();
-};
-StartMenu()
-
+}
+StartMenu();
 
 async function AddDepartment() {
-    const departmentResponse = await inquirer.prompt([
-        {
-            type: "input",
-            name: "id",
-            message: "What would you like the id to be?"
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "What would you like the id to be?"
-        },
-
+  const departmentResponse = await inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "id",
+        message: "What would you like the id to be?",
+      },
+      {
+        type: "input",
+        name: "name",
+        message: "Enter new department name?",
+      },
     ])
-
-
+    .then(async function (answer) {
+      let { id, name } = answer;
+    });
 }
+
+/// BUILD VIEW ROLES FUNCTION
+/// BUILD VIEW EMPLOYESS FUNCTION
