@@ -28,7 +28,7 @@ function StartMenu() {
         case "View Roles":
           ViewRoles();
           break;
-        case "ViewEmployees":
+        case "View Employees":
           ViewEmployees();
           break;
         case "Add Department":
@@ -55,18 +55,38 @@ async function AddDepartment() {
     .prompt([
       {
         type: "input",
-        name: "id",
-        message: "What would you like the id to be?",
-      },
-      {
-        type: "input",
         name: "name",
         message: "Enter new department name?",
       },
     ])
-    .then(async function (answer) {
-      let { id, name } = answer;
-    });
+    const newDeptAdd=await db.query("INSERT INTO department SET ?",departmentResponse)
+    StartMenu();
+
+}
+async function AddRole() {
+  const departments=await db.query("SELECT id as value, name as name FROM DEPARTMENT")
+  const roleResponse = await inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "title",
+        message: "Enter new role name?",
+      }, 
+      {
+        type: "input",
+        name: "salary",
+        message: "Enter new salary?",
+      },
+      {
+        type: "list",
+        name: "department_id",
+        message: "Choose department?",
+        choices: departments
+      },
+    ])
+    const newRoleAdd=await db.query("INSERT INTO role SET ?",roleResponse)
+    StartMenu();
+
 }
 
 /// BUILD VIEW ROLES FUNCTION
