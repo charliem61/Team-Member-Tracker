@@ -1,6 +1,5 @@
 # Team-Member-Tracker
 
-Live Link: 
 Repo Link: https://github.com/charliem61/Team-Member-Tracker
 
 Goal/Motivation:
@@ -24,3 +23,4 @@ Learning Sql. Creating the tables and formatting the ids and manager codes to ma
 Formatting and creating the schema file correctly to ensure capatilization was set up to flow correctly to the corresponding key.
 
 Demonstration:
+https://youtu.be/At4dhEzZ2_M
